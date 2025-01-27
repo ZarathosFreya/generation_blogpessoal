@@ -1,13 +1,17 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Res } from '@nestjs/common';
 import { AppService } from './app.service';
+import { ApiExcludeEndpoint } from '@nestjs/swagger';
 
 // para definir um controlador no Spring Boot
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor() {}
 
+  @ApiExcludeEndpoint()
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  async redirect(@Res() resposta: any){
+    return resposta.redirect('/swagger');
   }
+
+ 
 }
