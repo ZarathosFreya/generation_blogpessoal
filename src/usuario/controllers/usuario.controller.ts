@@ -11,7 +11,7 @@ export class UsuarioController{
 
     constructor(private readonly usuarioService: UsuarioService){ }
 
-    @UseGuards(JwtAuthGuard) // método protegigo
+    @UseGuards(JwtAuthGuard) // método protegido
     @Get('/all')
     @HttpCode(HttpStatus.OK)
     findAll(): Promise<Usuario[]>{
